@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "sam-ecommerce/frontend/package.json", "use": "@vercel/static-build", "config": { "distDir": "dist" } },
+    { "src": "sam-ecommerce/backend/api/**/*.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "sam-ecommerce/backend/api/$1.js" },
+    { "src": "/(.*)", "dest": "sam-ecommerce/frontend/dist/$1" }
+  ]
+}
